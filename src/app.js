@@ -1,14 +1,14 @@
 const express = require('express');
+const {applyMiddlewares} = require('./middlewares/middlewares')
 const app = express();
-const router = require('./routes/routes')
+
 require('dotenv').config();
 const { PORT } = process.env;
 
 
-app.use(express.json());
-app.use('/', router);
 
+applyMiddlewares(app);
 
 app.listen(PORT, async() => {
-    console.log(`servidor iniciado en puerto ${PORT}`)
+    console.log(`servidor iniciado en puerto ${PORT}`);
 });
